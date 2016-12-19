@@ -6,17 +6,17 @@ function writeMsg($tipe){
 	} else 
 	if ($tipe == 'save.gagal') {
 		$MsgClass = "alert-danger";
-		$Msg = "<strong>Oops!</strong> Data gagal disimpan!";
+		$Msg = "<strong>Oops!</strong> Dato incorrecto!";
 	}
 	else 
 	if ($tipe == 'update.sukses') {
 		$MsgClass = "alert-success";
-		$Msg = "<strong>Sukses!</strong> Data berhasil diupdate. Selamat yah!";
+		$Msg = "<strong>Sukses!</strong> Dato actualizado";
 	}
 	else 
 	if ($tipe == 'update.gagal') {
 		$MsgClass = "alert-danger";
-		$Msg = "<strong>Oops!</strong> Data gagal diupdate!";
+		$Msg = "<strong>Oops!</strong> Dato no actualizado";
 	}
 
 echo "<div class=\"alert alert-dismissible ".$MsgClass."\">

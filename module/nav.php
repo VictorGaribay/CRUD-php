@@ -12,7 +12,7 @@
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <li><a href="index.php">Agregar Usuario</a></li>
-              <li><a href="rekap.php">Lista de Usuarios</a></li>
+              <li><a href="list.php">Lista de Usuarios</a></li>
             </ul>
           </div>
         </div>
