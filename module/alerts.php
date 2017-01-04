@@ -1,27 +1,21 @@
 <?php
 function writeMsg($tipe){
 	if ($tipe=='save.sukses') {
-		$MsgClass = "alert-success";
-		$Msg = "<strong>Sukses!</strong> Dato ingresado correctamente";	
+		echo '<script>alert("DATO INGRESADO CORRECTAMENTE")</script> ';	
 	} else 
 	if ($tipe == 'save.gagal') {
-		$MsgClass = "alert-danger";
-		$Msg = "<strong>Oops!</strong> Dato incorrecto!";
+		echo '<script>alert("DATO INCORRECTO")</script> ';
 	}
 	else 
 	if ($tipe == 'update.sukses') {
-		$MsgClass = "alert-success";
-		$Msg = "<strong>Sukses!</strong> Dato actualizado";
+		
+		echo '<script>alert("DATO ACTUALIZADO")</script> ';
 	}
 	else 
 	if ($tipe == 'update.gagal') {
-		$MsgClass = "alert-danger";
-		$Msg = "<strong>Oops!</strong> Dato no actualizado";
+		 echo '<script>alert("Dato no actualizado")</script> ';
 	}
 
-echo "<div class=\"alert alert-dismissible ".$MsgClass."\">
-  	  <button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button>
-  	  ".$Msg."
-	  </div>";		  
+	  
 }
 ?>

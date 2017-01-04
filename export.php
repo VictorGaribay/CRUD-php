@@ -9,7 +9,7 @@ header("Content-Disposition: attachment; filename=DATA_EXPORT.xls");
 include "config/connect.php";
 
 //Write your SQL here
-$sql = mysql_query("SELECT dni, nombres, apellidos FROM usuarios ORDER BY id_usarios");
+$sql = mysql_query("SELECT dni, nombres, apellidos,fecha_tramite,categoria,estado FROM usuarios ORDER BY id_usarios");
 
 //This part generate your SQL result into table
 echo "<table border='1'>\n";

@@ -21,9 +21,29 @@
 	body {
   			padding-top: 20px;
   			padding-bottom: 20px;
+  			background: url(img/fondos.jpg) no-repeat center center fixed; 
+  			-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+
 		}
 
-	.navbar {
+		.navbar {
   			margin-bottom: 20px;
+  			background-color: #2861bb;
+  			font-color: white;
+
+
+
 		}
+		.nav-link{
+						color: white;
+		}
+
+		.table{
+		border: 3px 3px 3px 3px solid;
+		}
+
+
 </style>

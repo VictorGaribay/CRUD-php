@@ -11,7 +11,16 @@ include "module/header.php";
 include "module/alerts.php";
 include "config/connect.php"; 
 
+session_start();
+if (!isset($_SESSION['id'])) {
+
+  header('location: perfil.php') ; 
+}
 ?>
+
+
+
+
 
 <?php     
         $query="SELECT id_categoria,nombre FROM categoria"; 
@@ -25,7 +34,7 @@ include "config/connect.php";
 </head>
 
 
-<body>
+<body >
 
 
 <div class="container">
@@ -53,17 +62,17 @@ if(isset($_POST['simpan']))
 
 	<div class="form-group">
   		<label class="col-form-label" for="dni">DNI</label>
-  		<input type="text" class="form-control" name="dni" id="dni" required>
+  		<input type="number" class="form-control" name="dni" id="dni" required=”required” placeholder="DNI">
 	</div>
 
 	<div class="form-group">
   		<label class="control-label" for="nombres">Nombres</label>
-  		<input type="text" class="form-control" name="nombres" id="nombres" required>
+  		<input type="text" class="form-control" name="nombres" id="nombres" required=”required” placeholder="NOMBRES">
 	</div>
 
 	<div class="form-group">
   		<label class="control-label" for="apellidos">Apellidos</label>
-  		<input type="text" class="form-control" name="apellidos" id="apellidos">
+  		<input type="text" class="form-control" name="apellidos" id="apellidos" required=”required” placeholder="APELLIDOS">
 	</div>
 
 					<div class="form-group ">
@@ -75,7 +84,7 @@ if(isset($_POST['simpan']))
 			        <i class="fa fa-calendar">
 			        </i>
 			       </div>
-			       <input class="form-control" id="fecha_tramite" name="fecha_tramite" placeholder="YYYY/MM/DD" type="text"/>
+			       <input class="form-control"  required=”required” id="fecha_tramite" name="fecha_tramite" placeholder="YYYY/MM/DD" type="text"/>
 			      </div>
 			     </div>
 							<br>
@@ -85,12 +94,12 @@ if(isset($_POST['simpan']))
 					<label class="control-label " for="select">
 				       Seleccione categoria
 				      </label>
-					<select class="select form-control" name="categoria" id="categoria"  > 
+					<select class="select form-control" name="categoria" id="categoria" required=”required”  > 
 			                  <option value="">Categoria</option> 
 			                               <?php 
 			                              while($row=mysql_fetch_array($resultado)) 
 			                              echo "<option  value='".$row["id_categoria"]."'>" 
-			                                .$row["nombre"]."</option>"; ?> 
+			                                .$row["id_categoria"]."</option>"; ?> 
 			                                </select>
 
 				</div>	
@@ -99,7 +108,7 @@ if(isset($_POST['simpan']))
 				      <label class="control-label " for="estado">
 				       Seleccione estado
 				      </label>
-				      <select class="select form-control" id="estado" name="estado">
+				      <select class="select form-control" id="estado" name="estado" required=”required”>
 				       <option value="">
 				        Estado
 				       </option>
@@ -126,7 +135,7 @@ if(isset($_POST['simpan']))
 
 	<div class="form-group"  >
 	<input type="submit" value="Guardar" name="simpan" class="btn btn-primary">
-	<input type="reset" value="Resetear" class="btn btn-danger">
+	<input type="reset" value="Limpiar" class="btn btn-danger">
 	</div>
 
 	
@@ -143,6 +152,12 @@ if(isset($_POST['simpan']))
 </div>
 	
 </div>
+
+
+
+
+
+
 <?php include "module/footer.php"; ?>
 
 <!--  datepiker -->

@@ -1,19 +1,25 @@
-<nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-           
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li><a href="index.php">Agregar Usuario</a></li>
-              <li><a href="list.php">Lista de Usuarios</a></li>
-            </ul>
-          </div>
-        </div>
-</nav>
+
+
+
+<nav class="navbar navbar-light bg-faded">
+  
+  <ul class="nav navbar-nav">
+    
+    <li class="nav-item">
+      <a class="nav-link" href="index.php"><strong>Agregar Usuario</strong></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="list.php"><strong>Lista de Usuarios</strong></a>
+    </li>
+
+    
+
+  </ul>
+
+
+   <ul class="nav  navbar-nav pull-right">
+    <li><label class="nav-link" style="margin-top:15px ">Bienvenido <strong><?php echo $_SESSION['user'];?> </strong> </label></li>
+        <li><a class="nav-link" href="logout.php">Cerrar Cesión</a></li>       
+    </ul>
+
+</nav> 

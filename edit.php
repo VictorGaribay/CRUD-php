@@ -11,6 +11,7 @@ Email	 	 : hendrabpp[at]gmail.com
 include "module/header.php";
 include "module/alerts.php";
 include "config/connect.php"; 
+session_start();
    
         $query="SELECT id_categoria,nombre FROM categoria"; 
         $resultado=mysql_query($query); 
@@ -29,7 +30,7 @@ $data = mysql_fetch_array($sql);
 <div class="row">
     <div class="col-lg-12">
         <div class="page-header">
-            <h1>Form Edit (Update)</h1>
+            <h1>Actualizar Usuario</h1>
         </div>
     </div>
 </div>
@@ -41,7 +42,7 @@ $data = mysql_fetch_array($sql);
 <?php  
 if(isset($_POST['update']))
 {
-	mysql_query("UPDATE usuarios SET dni = '".$_POST['dni']."', nombres = '".$_POST['nombres']."', apellidos = '".$_POST['apellidos']."', fecha_tramite = '".$_POST['fecha_tramite']."', categoria = '".$_POST['categoria']."', estado = '".$_POST['estado']."', WHERE id_usarios = '".$_GET['id']."'");
+	mysql_query("UPDATE usuarios SET dni = '".$_POST['dni']."', nombres = '".$_POST['nombres']."', apellidos = '".$_POST['apellidos']."', fecha_tramite = '".$_POST['fecha_tramite']."', categoria = '".$_POST['categoria']."', estado = '".$_POST['estado']."' WHERE id_usarios = '".$_GET['id']."'");
 	writeMsg('update.sukses');
 
 	//Re-Load Data from DB
@@ -74,7 +75,7 @@ if(isset($_POST['update']))
 			        <i class="fa fa-calendar">
 			        </i>
 			       </div>
-			       <input class="form-control" id="fecha_tramite" name="fecha_tramite" placeholder="YYYY/MM/DD" type="text" value="<?php echo $data['fecha_tramite']; ?>" />
+			       <input class="form-control" id="fecha_tramite" name="fecha_tramite" placeholder="yyyy/mm/dd" type="text" value="<?php echo $data['fecha_tramite']; ?>" />
 			      </div>
 			     </div>
 
@@ -83,29 +84,29 @@ if(isset($_POST['update']))
 					<label class="control-label " for="select">
 				       Seleccione categoria
 				      </label>
-					<select class="select form-control" name="categoria" id="categoria" value="<?php echo $data['categoria']; ?>" > 
-			                  <option value="<?php echo $data['categoria']; ?>">Categoria</option> 
+					<select class="select form-control" name="categoria" id="categoria"  >
+			                  <option value="<?php echo $data['categoria']; ?>">  <?php echo $data['categoria']; ?> </option> 
 			                               <?php 
 			                              while($row=mysql_fetch_array($resultado)) 
 			                              echo "<option  value='".$row["id_categoria"]."'>" 
-			                                .$row["nombre"]."</option>"; ?> 
+			                                .$row["id_categoria"]."</option>"; ?> 
 			                                </select>
 
 				</div>	
 
 					 <div class="form-group ">
-				      <label class="control-label " for="estado" value="<?php echo $data['estado']; ?>">
+				      <label class="control-label " for="estado" >
 				       Seleccione estado
 				      </label>
 				      <select class="select form-control" id="estado" name="estado" >
 				       <option  value="<?php echo $data['estado']; ?>">
-				        Estado
-				       </option>
-				       <option value="Pendiente">
-				        Pendiente
+				      <?php echo $data['estado']; ?>
 				       </option>
 				       <option value="Entregado">
 				        Entregado
+				       </option>
+				       <option value="Pendiente">
+				        Pendiente
 				       </option>
 				      </select>
 				     </div>
@@ -113,8 +114,8 @@ if(isset($_POST['update']))
 
 
 	<div class="form-group">
-	<input type="submit" value="Update" name="update" class="btn btn-primary">
-	<a href="rekap.php" class="btn btn-danger">Batal</a>
+	<input type="submit" value="Actualizar" name="update" class="btn btn-primary">
+	<a href="list.php" class="btn btn-danger">Volver</a>
 	</div>
 
 	</form>

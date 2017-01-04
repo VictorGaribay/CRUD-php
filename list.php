@@ -11,6 +11,12 @@ include "module/header.php";
 include "module/alerts.php";
 include "config/connect.php"; 
 
+session_start();
+
+
+
+
+
 $sql = mysql_query("SELECT id_usarios, dni, nombres, apellidos, fecha_tramite, categoria, estado from usuarios  ORDER BY id_usarios DESC");
 ?>
 <script type="text/javascript">
@@ -74,7 +80,7 @@ apex_search.search = function(e){
 <div class="row">
 	<div class="col-md-12">
 	<p>
-		<table class="table table-hover table-bordered">
+		<table class="table table-hover table-bordered" >
 			<thead>
 				<tr>
 					<th width="5%"><center>NO</center></th>
@@ -95,29 +101,24 @@ apex_search.search = function(e){
 					<td><?php echo $row['nombres']; ?></td>
 					<td><?php echo $row['apellidos']; ?></td>
 					<td><?php echo $row['fecha_tramite']; ?></td>
-					<td><?php 
-							switch ($row['categoria']) {
-							    case 1:
-							        echo "A1";
-							        break;
-							    case 2:
-							        echo "A2";
-							        break;
-							    case 3:
-							        echo "A3";
-							        break;
-							}
-
-
-					 ?>
+					<td><?php echo $row['categoria']; ?>
 						
-						<td><?php echo $row['estado']; ?></td>
+						<td ><?php 
+							switch ($row['estado']) {
+							    case 'Pendiente':
+							        echo "<font color='red'>Pendiente</font>";
+							        break;
+							    case 'Entregado':
+							        echo "<font color='blue'>Entregado</font>";
+							        break;
+							   
+							} ?> </td>
 
 					</td>
 					<td align="center">
-					<a href="edit.php?id=<?php echo $row['id_usarios']; ?>">Actualizar</a> 
+					<a href="edit.php?id=<?php echo $row['id_usarios']; ?>"><img src="img/update.png" width="30" height="30" ></a> 
 					| 
-					<a href="del.php?id=<?php echo $row['id_usarios']; ?>" onclick ="if (!confirm('Usuario eliminado')) return false;">Borrar</a>
+					<a href="del.php?id=<?php echo $row['id_usarios']; ?>" onclick ="if (!confirm('DESEA ELIMINAR ESTE USUARIO')) return false;"><img src="img/drop.png" width="30" height="30" ></a>
 					</td>
 				</tr>
 			<?php $no++; } ?>	
