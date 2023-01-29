@@ -6,38 +6,36 @@ Website      : hendrasetiawan.net
 Email        : hendrabpp[at]gmail.com
 ===========================================
 
-Project ini dibuat sebagai bahan pembelajaran dasar PHP.
+This project is created as a basic PHP learning material.
 
-Fitur yang terdapat pada project ini meliputi:
-1. PHP Function
-2. Validasi form dengan jQuery
-3. Penyimpanan data ke MySQL dengan PHP
-4. Pembacaan data dari MySQL dengan PHP
-5. Update data MySQL dengan PHP
-6. Delete data mySQL dengan PHP
-7. Penggunaan Bootstrap
+The features included in this project are:
 
-Cara menjalankan:
-1. Copas folder crudphp ke htdocs. 
-2. Import DB crud (crud.sql) ke phpmyadmin.
-3. Jalankan dari browser via http://localhost/crudphp
+PHP Function
+Form validation using jQuery
+Storing data to MySQL using PHP
+Reading data from MySQL using PHP
+Updating MySQL data using PHP
+Deleting MySQL data using PHP
+Using Bootstrap
+To run:
 
-Struktur direktori:
+Copy the crudphp folder to htdocs.
+Import the crud DB (crud.sql) to phpmyadmin.
+Run from the browser via http://localhost/crudphp
+Directory structure:
 config
-   -connect.php --> File konfigurasi koneksi ke DB MySQL.
+-connect.php --> Configuration file for connecting to MySQL DB.
 module
-   -alerts.php --> Function untuk memanggil pesan sukses atau error.
-   -footer.php --> Modul footer.
-   -header.php --> Modul header.
-   -nav.php --> Modul navigasi (menu).
-del.php --> Modul untuk menghapus data.
-edit.php --> Menu Edit.
-index.php --> Menu utama / entry data.
-rekap.php --> Menu rekap.
-
-=============================================================================
+-alerts.php --> Function to call success or error messages.
+-footer.php --> Footer module.
+-header.php --> Header module.
+-nav.php --> Navigation module (menu).
+del.php --> Module for deleting data.
+edit.php --> Edit menu.
+index.php --> Main menu / data entry.
+rekap.php --> Recap menu.
 
 Need help?
 Feel free to contact me. :)
 
-Selamat belajar.
+Enjoy learning.
