@@ -9,20 +9,20 @@ header("Content-Disposition: attachment; filename=DATA_EXPORT.xls");
 include "config/connect.php";
 
 //Write your SQL here
-$sql = mysql_query("SELECT dni, nombres, apellidos,fecha_tramite,categoria,estado FROM usuarios ORDER BY id_usarios");
+$sql = mysqli_query($mysqli,"SELECT dni, nombres, apellidos,fecha_tramite,categoria,estado FROM usuarios ORDER BY id_usarios");
 
 //This part generate your SQL result into table
 echo "<table border='1'>\n";
-$cols = mysql_num_fields($sql);
+$cols = mysqli_num_fields($sql);
 $ncols = $cols - 1;
 echo "<tr>\n";
 for ($i = 0; $i <= $ncols; ++$i) {
-    $colname = mysql_field_name($sql, $i);
-    echo "  <th><b>".htmlentities($colname, ENT_QUOTES)."</b></th>\n";
+    $colname = mysqli_fetch_field_direct($sql, $i);
+    echo "  <th><b>".htmlentities($colname->name, ENT_QUOTES)."</b></th>\n";
 }
 echo "</tr>\n";
 
-while (($row = mysql_fetch_array($sql, MYSQL_ASSOC)) != false) {
+while (($row = mysqli_fetch_array($sql, MYSQLI_ASSOC)) != false) {
      echo "<tr>\n";
      foreach ($row as $therow) {
           echo "  <td>".(htmlentities($therow, ENT_QUOTES))."</td>\n";

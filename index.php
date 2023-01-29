@@ -24,7 +24,7 @@ if (!isset($_SESSION['id'])) {
 
 <?php     
         $query="SELECT id_categoria,nombre FROM categoria"; 
-        $resultado=mysql_query($query); 
+        $resultado=mysqli_query($mysqli,$query); 
 
 
 ?>  
@@ -55,7 +55,7 @@ if (!isset($_SESSION['id'])) {
 if(isset($_POST['simpan']))
 {
 	
-	mysql_query("INSERT INTO usuarios (dni, nombres, apellidos,fecha_tramite,categoria,estado) VALUES ('".$_POST['dni']."','".$_POST['nombres']."','".$_POST['apellidos']."','".$_POST['fecha_tramite']."','".$_POST['categoria']."','".$_POST['estado']."')");
+	mysqli_query($mysqli,"INSERT INTO usuarios (dni, nombres, apellidos,fecha_tramite,categoria,estado) VALUES ('".$_POST['dni']."','".$_POST['nombres']."','".$_POST['apellidos']."','".$_POST['fecha_tramite']."','".$_POST['categoria']."','".$_POST['estado']."')");
 	writeMsg('save.sukses');
 }
 ?>
@@ -97,7 +97,7 @@ if(isset($_POST['simpan']))
 					<select class="select form-control" name="categoria" id="categoria" required=”required”  > 
 			                  <option value="">Categoria</option> 
 			                               <?php 
-			                              while($row=mysql_fetch_array($resultado)) 
+			                              while($row=mysqli_fetch_array($resultado,MYSQLI_BOTH)) 
 			                              echo "<option  value='".$row["id_categoria"]."'>" 
 			                                .$row["id_categoria"]."</option>"; ?> 
 			                                </select>
