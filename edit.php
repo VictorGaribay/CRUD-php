@@ -14,13 +14,13 @@ include "config/connect.php";
 session_start();
    
         $query="SELECT id_categoria,nombre FROM categoria"; 
-        $resultado=mysql_query($query); 
+        $resultado=mysqli_query($mysqli,$query); 
 
 
 
 
-$sql = mysql_query("SELECT dni,nombres,apellidos,fecha_tramite,categoria,estado FROM usuarios WHERE id_usarios= '".$_GET['id']."'");
-$data = mysql_fetch_array($sql);
+$sql = mysqli_query($mysqli,"SELECT dni,nombres,apellidos,fecha_tramite,categoria,estado FROM usuarios WHERE id_usarios= '".$_GET['id']."'");
+$data = mysqli_fetch_array($sql,MYSQLI_BOTH);
 ?>
 </head>
 <body>
@@ -42,12 +42,12 @@ $data = mysql_fetch_array($sql);
 <?php  
 if(isset($_POST['update']))
 {
-	mysql_query("UPDATE usuarios SET dni = '".$_POST['dni']."', nombres = '".$_POST['nombres']."', apellidos = '".$_POST['apellidos']."', fecha_tramite = '".$_POST['fecha_tramite']."', categoria = '".$_POST['categoria']."', estado = '".$_POST['estado']."' WHERE id_usarios = '".$_GET['id']."'");
+	mysqli_query($mysqli,"UPDATE usuarios SET dni = '".$_POST['dni']."', nombres = '".$_POST['nombres']."', apellidos = '".$_POST['apellidos']."', fecha_tramite = '".$_POST['fecha_tramite']."', categoria = '".$_POST['categoria']."', estado = '".$_POST['estado']."' WHERE id_usarios = '".$_GET['id']."'");
 	writeMsg('update.sukses');
 
 	//Re-Load Data from DB
-	$sql = mysql_query("SELECT id_usarios, dni, nombres, apellidos,fecha_tramite,categoria,estado FROM usuarios WHERE id_usarios = '".$_GET['id']."'");
-	$data = mysql_fetch_array($sql);
+	$sql = mysqli_query($mysqli,"SELECT id_usarios, dni, nombres, apellidos,fecha_tramite,categoria,estado FROM usuarios WHERE id_usarios = '".$_GET['id']."'");
+	$data = mysqli_fetch_array($sql,MYSQLI_BOTH);
 }
 ?>
 
@@ -87,7 +87,7 @@ if(isset($_POST['update']))
 					<select class="select form-control" name="categoria" id="categoria"  >
 			                  <option value="<?php echo $data['categoria']; ?>">  <?php echo $data['categoria']; ?> </option> 
 			                               <?php 
-			                              while($row=mysql_fetch_array($resultado)) 
+			                              while($row=mysqli_fetch_array($resultado,MYSQLI_BOTH)) 
 			                              echo "<option  value='".$row["id_categoria"]."'>" 
 			                                .$row["id_categoria"]."</option>"; ?> 
 			                                </select>
