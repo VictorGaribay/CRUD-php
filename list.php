@@ -17,7 +17,7 @@ session_start();
 
 
 
-$sql = mysql_query("SELECT id_usarios, dni, nombres, apellidos, fecha_tramite, categoria, estado from usuarios  ORDER BY id_usarios DESC");
+$sql = mysqli_query($mysqli,"SELECT id_usarios, dni, nombres, apellidos, fecha_tramite, categoria, estado from usuarios  ORDER BY id_usarios DESC");
 ?>
 <script type="text/javascript">
 window.apex_search = {};
@@ -94,7 +94,7 @@ apex_search.search = function(e){
 				</tr>
 			</thead>
 			<tbody id="data">
-			<?php $no=1; while ($row = mysql_fetch_array($sql)) { ?>
+			<?php $no=1; while ($row = mysqli_fetch_array($sql,MYSQLI_BOTH)) { ?>
 				<tr>
 					<td align="center"><?php echo $no; ?></td>
 					<td><?php echo $row['dni']; ?></td>
